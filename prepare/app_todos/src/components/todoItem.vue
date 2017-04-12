@@ -28,6 +28,7 @@
           this.libg = '#fff'
         }
       },
+
       deleteItem() {
         const {todo, deleteTodo} = this
         if(confirm(`确定删除${todo.title}的评论吗?`)) {
