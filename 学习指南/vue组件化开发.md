@@ -29,7 +29,7 @@
     在父组件对象的components属性中配置子组件(将组件映射成标签)
     ```
     <template>
-      <hello>
+      <hello tt='abc'>
     </template>
     <script>
       import Hello from './components/Hello'
