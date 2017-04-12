@@ -55,6 +55,12 @@
       }
     },
 
+    events: {
+      'comment.delete' (index) {
+        this.comments.splice(index, 1)
+      }
+    },
+
     components: {
       CommentAdd,
       CommentList

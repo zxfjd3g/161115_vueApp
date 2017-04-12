@@ -2,6 +2,7 @@
   <li class="list-group-item">
     <div class="handle">
       <a href="javascript:;" @click="deleteComment">删除</a>
+      <a href="javascript:;" @click="deleteComment2">删除2</a>
     </div>
     <p class="user"><span >{{comment.name}}</span><span>说:</span></p>
     <p class="centence">{{comment.content}}</p>
@@ -17,6 +18,14 @@
         const name = this.comment.name
         if (window.confirm(`确定删除${name}吗?`)) {
           this.remove(this.index)
+        }
+      },
+
+      deleteComment2 () {
+        const name = this.comment.name
+        if (window.confirm(`确定删除${name}吗?`)) {
+          // 派发事件，事件沿着父链冒泡；
+          this.$dispatch('comment.delete', this.index)
         }
       }
     }
