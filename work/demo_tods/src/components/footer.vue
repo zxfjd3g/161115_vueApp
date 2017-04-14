@@ -4,14 +4,35 @@
       <input type="checkbox"/>
     </label>
     <span>
-          <span>已完成0</span> / 全部2
+          <span>已完成{{completedSize}}</span> / 全部{{todos.length}}
         </span>
     <button class="btn btn-danger">清除已完成任务</button>
   </div>
 </template>
 
 <script>
-  export default {}
+  export default {
+    props: {
+      todos: Array,
+      removeAllCompleted: Function,
+      updateTodosState: Function
+    },
+
+    computed: {
+      completedSize () {
+       /* var size = 0
+        for (var i = 0; i < this.todos.length; i++) {
+          var todo = this.todos[i]
+          size += todo.completed ? 1 : 0
+        }
+        return size*/
+
+        return this.todos.reduce((preValue, todo) => {
+          return preValue + (todo.completed ? 1 : 0)
+        }, 0)
+      }
+    }
+  }
 </script>
 
 <style>

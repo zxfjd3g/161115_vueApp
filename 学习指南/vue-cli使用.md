@@ -31,7 +31,7 @@
   |-- node_modules
   |-- src : 源码文件夹
     |-- components: vue组件及其相关资源文件夹
-      |-- app.vue: 应用根主组件
+    |-- app.vue: 应用根主组件
     |-- main.js: 应用入口js
   |-- static: 静态资源文件夹
   |-- .babelrc: babel的配置文件

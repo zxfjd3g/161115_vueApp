@@ -3,7 +3,7 @@
     <div class="todo-wrap">
       <todo-header :add-todo="addTodo"></todo-header>
       <todo-main :todos="todos"></todo-main>
-      <todo-footer></todo-footer>
+      <todo-footer :todos="todos" :remove-all-completed="removeAllCompleted" :update-todos-state="updateTodosState"></todo-footer>
     </div>
   </div>
 </template>
@@ -29,6 +29,16 @@
       },
       deleteTodo (todo) {
         this.todos.$remove(todo)
+      },
+      removeAllCompleted () {
+        this.todos = this.todos.filter(todo => {
+          return !todo.completed
+        })
+      },
+      updateTodosState (allChecked) {
+        this.todos.forEach(todo => {
+          todo.completed = allChecked
+        })
       }
     },
 
