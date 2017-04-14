@@ -1,12 +1,12 @@
 <template>
   <div class="todo-footer">
     <label>
-      <input type="checkbox"/>
+      <input type="checkbox" v-model="allTodosState"/>
     </label>
     <span>
           <span>已完成{{completedSize}}</span> / 全部{{todos.length}}
         </span>
-    <button class="btn btn-danger">清除已完成任务</button>
+    <button class="btn btn-danger" @click="removeAllCompleted" v-show="completedSize>0">清除已完成任务</button>
   </div>
 </template>
 
@@ -30,6 +30,16 @@
         return this.todos.reduce((preValue, todo) => {
           return preValue + (todo.completed ? 1 : 0)
         }, 0)
+      },
+
+      allTodosState: {
+        get () {
+          return this.todos.length > 0 && this.completedSize === this.todos.length
+        },
+
+        set (value) {
+          this.updateTodosState(value)
+        }
       }
     }
   }

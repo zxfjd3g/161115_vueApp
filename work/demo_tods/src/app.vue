@@ -11,16 +11,18 @@
   import header from './components/header'
   import main from './components/main'
   import footer from './components/footer'
+  import storageUtil from './util/storageUtil'
 
   export default {
     data () {
       return {
-        todos: [
-          {text: '吃饭', completed: false},
-          {text: '睡觉', completed: true},
-          {text: '打豆豆', completed: false}
-        ]
+        todos: []
       }
+    },
+
+    created () {
+      // this.todos = JSON.parse(window.localStorage.getItem('TODOS') || '[]')
+      this.todos = storageUtil.fetch()
     },
 
     methods: {
@@ -45,6 +47,13 @@
     events: {
       todo_delete (todo) {
         this.deleteTodo(todo)
+      }
+    },
+
+    watch: {
+      'todos': {
+        deep: true,
+        handler: storageUtil.save
       }
     },
 
