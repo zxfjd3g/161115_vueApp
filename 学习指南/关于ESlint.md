@@ -2,7 +2,7 @@
 * 说明
   * ESLint是一个代码规范检查工具
   * 官网: http://eslint.org/
-  * 基本已替代以前的JSLint
+  * 基本已替代以前的JSHint
 * ESLint提供以下支持
 	* ES6
 	* AngularJS
